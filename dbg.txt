@@ -1,0 +1,18 @@
+lkd> uf 805d117a 
+nt!PsCreateSystemThread+0x3c:
+
+
+
+你的函数不是ZwCreateProcessEx的原型，ZwCreateProcessEx的原型是：
+NTSTATUS Hook_ZwCreateProcessEx(
+  OUT PHANDLE ProcessHandle,
+  IN ACCESS_MASK DesiredAccess,
+  IN POBJECT_ATTRIBUTES ObjectAttributes OPTIONAL,
+  IN HANDLE ParentProcess,
+  IN BOOLEAN InheritObjectTable,
+  IN HANDLE SectionHandle OPTIONAL,
+  IN HANDLE DebugPort OPTIONAL,
+  IN HANDLE ExceptionPort OPTIONAL,
+  IN HANDLE UnknownHandle
+  );
+拦这个函数基本上没有什么用，因为无法从这个函数的参数中获得exe文件名称和路径。如果用驱动程序，应该注册PsSetCreateProcessNotifyRoutine、PsSetLoadImageNotifyRoutine这两个通知；如果用应用程序，应该拦CreateProcess、CreateProcessAsUser。

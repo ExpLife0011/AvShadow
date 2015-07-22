@@ -1,0 +1,4 @@
+               Copyright (c) 1992-2011  lazycat studio
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+1. In the unload routine,when call IoDeleteSymbolicLink system will be BSOD.

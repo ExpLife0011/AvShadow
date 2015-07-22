@@ -1,0 +1,9 @@
+1.
+NTSYSAPI
+NTSTATUS 
+NTAPI
+ZwLoadDriver(
+    IN PUNICODE_STRING  DriverServiceName
+    );
+由于在3790的DDK中没有LoadDriver的声明，我就自己声明了个，但是开始并没有写NTSYSAPI。
+然后在SSDT HOOK时得到的函数地址是错的，所以service index也是错的。
